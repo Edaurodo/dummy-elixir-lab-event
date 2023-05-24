@@ -30,25 +30,28 @@ namespace dummy_elixir_lab_event.modules.elixir_event.command.slash.add
             return true;
         }
         [SlashCommand("Emoji", "Um novo emoji ao servidor")]
-        public async Task AddEmoji(InteractionContext ctx, [Option("emoji", "Copie um emoji de outro servidor")] string emojiArg, [Option("Imagem", "envie a imagem do emoji tamanho recomendado (128px X 128px)")] DiscordAttachment? file = null)
+        public async Task AddEmoji(InteractionContext ctx, [Option("emoji", "Copie um emoji de outro servidor")] string? emojiArg = null, [Option("Imagem", "envie a imagem do emoji tamanho recomendado (128px X 128px)")] DiscordAttachment? file = null)
         {
             try
             {
                 await ctx.DeferAsync(true);
-                string emoji = emojiArg.Substring(0, emojiArg.IndexOf('>') + 1);
-                if (!string.IsNullOrWhiteSpace(emoji) && Regex.IsMatch(emoji, "(<(a?):(\\w\\S+):(\\d{1,32})>)"))
+                if (!string.IsNullOrWhiteSpace(emojiArg))
                 {
-                    string extension = emoji.Substring(1, 1).ToLower() == "a" ? ".gif" : ".png";
-                    string name = emoji.Substring(emoji.IndexOf(':') + 1, emoji.LastIndexOf(':') - emoji.IndexOf(':') - 1);
-                    string urlString = $"https://cdn.discordapp.com/emojis/{emoji.Substring(emoji.LastIndexOf(':') + 1, emoji.IndexOf('>') - emoji.LastIndexOf(':') - 1)}{extension}";
-
-                    if (Uri.TryCreate(urlString, UriKind.Absolute, out Uri url))
+                    string emoji = emojiArg.Substring(0, emojiArg.IndexOf('>') + 1);
+                    if (!string.IsNullOrWhiteSpace(emoji) && Regex.IsMatch(emoji, "(<(a?):(\\w\\S+):(\\d{1,32})>)"))
                     {
-                        await ctx.EditResponseAsync(new DiscordWebhookBuilder(_add.EmojiBuilderMessage(ctx.User, name, url)));
+                        string extension = emoji.Substring(1, 1).ToLower() == "a" ? ".gif" : ".png";
+                        string name = emoji.Substring(emoji.IndexOf(':') + 1, emoji.LastIndexOf(':') - emoji.IndexOf(':') - 1);
+                        string urlString = $"https://cdn.discordapp.com/emojis/{emoji.Substring(emoji.LastIndexOf(':') + 1, emoji.IndexOf('>') - emoji.LastIndexOf(':') - 1)}{extension}";
+
+                        if (Uri.TryCreate(urlString, UriKind.Absolute, out Uri url))
+                        {
+                            await ctx.EditResponseAsync(new DiscordWebhookBuilder(_add.EmojiBuilderMessage(ctx.User, name, url)));
+                            return;
+                        }
+                        await ctx.EditResponseAsync(new DiscordWebhookBuilder().AddEmbed(DummyUtils.ToDiscordEmbed(new DummyEmbed(color: "#FF0000", description: "> **Algo de errado aconteceu, tente novamente!**"))));
                         return;
                     }
-                    await ctx.EditResponseAsync(new DiscordWebhookBuilder().AddEmbed(DummyUtils.ToDiscordEmbed(new DummyEmbed(color: "#FF0000", description: "> **Algo de errado aconteceu, tente novamente!**"))));
-                    return;
                 }
                 if (file != null)
                 {

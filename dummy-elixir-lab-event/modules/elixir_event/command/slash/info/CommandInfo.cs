@@ -15,35 +15,8 @@ namespace dummy_elixir_lab_event.modules.elixir_event.command.slash.info
         [SlashCommand("Server", "Verifique algumas informações sobre o servidor")]
         public async Task GuildInfo(InteractionContext ctx)
         {
-            try
-            {
-                await ctx.DeferAsync(true);
-                await ctx.EditResponseAsync(new(_infoService.GetGuildDisplayInfo(ctx.Guild)));
-            }
-            catch (Exception ex)
-            {
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.Write("Mesage: ");
-                Console.ForegroundColor = ConsoleColor.Red;
-
-                Console.WriteLine(ex.Message);
-
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.Write("Source: ");
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine(ex.Source);
-
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.Write("Target Site: ");
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine(ex.TargetSite);
-
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.Write("Stack Trace: ");
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine(ex.StackTrace + "\n");
-                Console.ResetColor();
-            }
+            await ctx.DeferAsync(true);
+            await ctx.EditResponseAsync(new(_infoService.GetGuildDisplayInfo(ctx.Guild)));
         }
 
         [SlashCommand("User", "Obetenha inforamações de um úsuario")]

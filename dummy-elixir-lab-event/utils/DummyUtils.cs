@@ -27,7 +27,6 @@ namespace dummy_elixir_lab_event.utils
                 PermissionStrings[item] = customAttribute.String;
             }
         }
-
         public static string ToPermissionString(this DiscordPermissions perm)
         {
             if (perm == DiscordPermissions.None)
@@ -40,7 +39,6 @@ namespace dummy_elixir_lab_event.utils
                                          select xkvp.Value;
             return string.Join(", ", source.OrderBy((string xs) => xs));
         }
-
         public static DiscordEmbed ToDiscordEmbed(DummyEmbed embed)
         {
             DiscordEmbedBuilder eb = new DiscordEmbedBuilder();
