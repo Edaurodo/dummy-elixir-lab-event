@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33627.172
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dummy-elixir-lab-event", "dummy-elixir-lab-event\dummy-elixir-lab-event.csproj", "{5D0C3888-485E-451C-9CF1-5CD8E0B1601A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5D0C3888-485E-451C-9CF1-5CD8E0B1601A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D0C3888-485E-451C-9CF1-5CD8E0B1601A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D0C3888-485E-451C-9CF1-5CD8E0B1601A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D0C3888-485E-451C-9CF1-5CD8E0B1601A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F4865B01-38FD-40A4-B1F4-A839318D90F6}
+	EndGlobalSection
+EndGlobal
