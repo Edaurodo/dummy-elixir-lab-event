@@ -3,7 +3,6 @@
     public enum InfoType
     {
         Guild,
-        Role,
-        Emoji
+        Role
     }
 }

@@ -7,6 +7,7 @@ using dummy_elixir_lab_event.modules.elixir_event.command.slash.info;
 using Microsoft.Extensions.DependencyInjection;
 using dummy_elixir_lab_event.modules.elixir_event.command.slash.info.services;
 using dummy_elixir_lab_event.modules.elixir_event.command.slash.add;
+using dummy_elixir_lab_event.modules.elixir_event.command.slash.add.servuces;
 
 namespace dummy_elixir_lab_event.core
 {

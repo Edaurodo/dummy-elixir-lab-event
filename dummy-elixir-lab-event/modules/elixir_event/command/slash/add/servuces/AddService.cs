@@ -4,7 +4,7 @@ using DSharpPlus.EventArgs;
 using dummy_elixir_lab_event.utils;
 using System.Collections.Concurrent;
 
-namespace dummy_elixir_lab_event.modules.elixir_event.command.slash.info.services
+namespace dummy_elixir_lab_event.modules.elixir_event.command.slash.add.servuces
 {
     public sealed class AddService
     {

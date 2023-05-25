@@ -9,7 +9,6 @@ namespace dummy_elixir_lab_event.modules.elixir_event.command.slash.info.service
     public sealed class InfoService
     {
         private DiscordClient _client;
-
         public InfoService(DiscordClient client)
         {
             _client = client;

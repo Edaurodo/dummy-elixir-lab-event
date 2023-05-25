@@ -12,7 +12,6 @@ namespace dummy_elixir_lab_event.utils
         public static Encoding UTF8 = Encoding.UTF8;
         public static string DirectoryConfig = Path.Combine(new[] { Directory.GetCurrentDirectory(), "configuration" });
         public static string DirectoryTemp = Path.Combine(new[] { Directory.GetCurrentDirectory(), "temp" });
-
         private static Dictionary<DiscordPermissions, string> PermissionStrings { get; set; }
 
         static DummyUtils()
@@ -42,7 +41,6 @@ namespace dummy_elixir_lab_event.utils
         public static DiscordEmbed ToDiscordEmbed(DummyEmbed embed)
         {
             DiscordEmbedBuilder eb = new DiscordEmbedBuilder();
-
             eb.WithColor(new DiscordColor(embed.Color));
             _ = embed.Author.Name is null && embed.Author.Image is null ? null : eb.WithAuthor(embed.Author.Name, embed.Author.Url, embed.Author.Image);
             _ = embed.Title.Value is null ? null : eb.WithTitle(embed.Title.Value);
@@ -52,12 +50,10 @@ namespace dummy_elixir_lab_event.utils
             _ = embed.Image is null ? null : eb.WithImageUrl(embed.Image);
             _ = embed.Footer.Value is null && embed.Footer.Image is null ? null : eb.WithFooter(embed.Footer.Value, embed.Footer.Image);
             _ = embed.Footer.Timestamp is null || embed.Footer.Timestamp is false ? null : eb.WithTimestamp(DateTime.Now.ToLocalTime());
-
             if (embed.Fields.Count() > 0)
             {
                 embed.Fields.ToList().ForEach(field => { eb.AddField(field.Title, field.Value, field.Inline ?? false); });
             }
-
             return eb.Build();
         }
         public static bool ValidateColorHex(string hex)
